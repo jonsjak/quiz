@@ -12,6 +12,7 @@ const Summary = () => {
         <div className="summary-card" key={question.id}>
           <p>{question.questionText}</p>
           <p>User answer: {answers[index].answerIndex}</p>
+          <p>User answer: {answers[index].answer}</p>
           <p>Correct answer: {question.options[question.correctAnswerIndex]}</p>
         </div>
       ))}

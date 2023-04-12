@@ -14,7 +14,7 @@ const store = configureStore({ reducer });
 export const App = () => {
   return (
     <Provider store={store}>
-      {/* Here we insert: StartQuiz and Summary */}
+      {/* Here we insert IntroPage */}
       <CurrentQuestion />
     </Provider>
   );

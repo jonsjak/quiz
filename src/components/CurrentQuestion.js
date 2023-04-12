@@ -25,7 +25,7 @@ export const CurrentQuestion = () => {
   return (
     <>
       {!isQuizOver && (
-        <div>
+        <div key={question.id}>
           <h1>Question: {question.questionText}</h1>
           {question.options.map((option) => (
             <div key={option.id}>
