@@ -11,7 +11,7 @@ const questions = [
   { id: 7, questionText: 'Which of the following is not a common symptom of zombification?', options: ['Pale skin', 'Bloodshot eyes', 'Rapid heartbeat', 'Drooling'], correctAnswerIndex: 2 },
   { id: 8, questionText: 'What is the best way to defend yourself against a zombie attack?', options: ['Use a shield', 'Wear heavy armor', 'Stay agile and avoid getting cornered', 'Use a distraction to escape'], correctAnswerIndex: 2 },
   { id: 9, questionText: 'Which of the following is not a popular zombie movie or TV show?', options: ['The Walking Dead', 'Zombieland', 'Shaun of the Dead', 'The Vampire Diaries'], correctAnswerIndex: 3 },
-  { id: 10, questionText: 'What is the best way to stop a zombie outbreak?!', options: ['Develop a vaccine', 'Quarantine infected individuals', 'Kill all zombies', 'Escape to another planet'], correctAnswerIndex: 1 }
+  { id: 10, questionText: 'What is the best way to stop a zombie outbreak?', options: ['Develop a vaccine', 'Quarantine infected individuals', 'Kill all zombies', 'Escape to another planet'], correctAnswerIndex: 1 }
 ]
 
 const initialState = {
@@ -87,6 +87,5 @@ export const quiz = createSlice({
     restart: () => {
       return initialState
     }
-
-  } 
+  }
 })

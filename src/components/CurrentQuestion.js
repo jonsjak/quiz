@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { quiz } from 'reducers/quiz'
 import Summary from './Summary'
+import Progressbar from './Progressbar'
+import RestartBtn from './RestartBtn'
 
 export const CurrentQuestion = () => {
   const question = useSelector((state) => state.quiz.questions[state.quiz.currentQuestionIndex])
@@ -18,10 +20,6 @@ export const CurrentQuestion = () => {
     dispatch(quiz.actions.goToNextQuestion())
   }
 
-  const handleRestartClick = () => {
-    dispatch(quiz.actions.restart())
-  }
-
   return (
     <>
       {/* Can we make a new component from this? */}
@@ -34,7 +32,8 @@ export const CurrentQuestion = () => {
             </div>
           ))}
           <p>Correct answer: {question.correctAnswerIndex} </p>
-          <button type="button" onClick={handleRestartClick}>Restart</button>
+          <Progressbar />
+          <RestartBtn />
         </div>)}
 
       {isQuizOver && (<Summary />)}
