@@ -1,12 +1,17 @@
+/* eslint-disable max-len */
 import { createSlice } from '@reduxjs/toolkit'
 
-// Change these to your own questions!
 const questions = [
-  { id: 1, questionText: 'Who set the Olympic record for the 100m dash in 2012?', options: ['Usain Bolt', 'Justin Gatlin', 'Tyson Gay', 'Asafa Powell'], correctAnswerIndex: 0 },
-  { id: 2, questionText: 'When was Michael Phelps last named male World Swimmer of the Year?', options: ['2012', '2014', '2016', '2018'], correctAnswerIndex: 2 },
-  { id: 3, questionText: 'Do you know the third answer?', options: ['a', 'b', 'c'], correctAnswerIndex: 1 },
-  { id: 4, questionText: 'Do you know the fourth answer?', options: ['a', 'b', 'c'], correctAnswerIndex: 2 },
-  { id: 5, questionText: 'Do you know the fifth answer?', options: ['a', 'b', 'c'], correctAnswerIndex: 0 }
+  { id: 1, questionText: 'Which of the following is not a common way to kill a zombie?', options: ['Shooting it in the head', 'Decapitating it', 'Stabbing it in the heart', 'Poisoning it'], correctAnswerIndex: 3 },
+  { id: 2, questionText: 'What is the most common way for someone to become a zombie?', options: ['Being bitten by a zombie', 'Eating contaminated food', 'Being exposed to radiation', 'Contracting a virus'], correctAnswerIndex: 0 },
+  { id: 3, questionText: 'Which of the following is not a type of zombie?', options: ['Runner', 'Walker', 'Crawler', 'Jumper'], correctAnswerIndex: 3 },
+  { id: 4, questionText: 'What is the best way to survive a zombie apocalypse?', options: ['Stay in one place and wait for rescue', 'Gather supplies and weapons', 'Join a group of survivors', 'Run as fast as you can'], correctAnswerIndex: 1 },
+  { id: 5, questionText: 'What is the best weapon to use against zombies?', options: ['Baseball bat', 'Knife', 'Flamethrower', 'Bow and arrow'], correctAnswerIndex: 2 },
+  { id: 6, questionText: 'What should you do if you encounter a zombie horde?', options: ['Stand your ground and fight', 'Run as fast as you can', 'Hide and wait for them to pass', 'Play dead and hope they dont notice you'], correctAnswerIndex: 1 },
+  { id: 7, questionText: 'Which of the following is not a common symptom of zombification?', options: ['Pale skin', 'Bloodshot eyes', 'Rapid heartbeat', 'Drooling'], correctAnswerIndex: 2 },
+  { id: 8, questionText: 'What is the best way to defend yourself against a zombie attack?', options: ['Use a shield', 'Wear heavy armor', 'Stay agile and avoid getting cornered', 'Use a distraction to escape'], correctAnswerIndex: 2 },
+  { id: 9, questionText: 'Which of the following is not a popular zombie movie or TV show?', options: ['The Walking Dead', 'Zombieland', 'Shaun of the Dead', 'The Vampire Diaries'], correctAnswerIndex: 3 },
+  { id: 10, questionText: 'What is the best way to stop a zombie outbreak?', options: ['Develop a vaccine', 'Quarantine infected individuals', 'Kill all zombies', 'Escape to another planet'], correctAnswerIndex: 1 }
 ]
 
 const initialState = {

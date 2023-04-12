@@ -24,6 +24,7 @@ export const CurrentQuestion = () => {
 
   return (
     <>
+      {/* Can we make a new component from this? */}
       {!isQuizOver && (
         <div key={question.id}>
           <h1>Question: {question.questionText}</h1>
@@ -35,6 +36,7 @@ export const CurrentQuestion = () => {
           <p>Correct answer: {question.correctAnswerIndex} </p>
           <button type="button" onClick={handleRestartClick}>Restart</button>
         </div>)}
+
       {isQuizOver && (<Summary />)}
     </>
   )
