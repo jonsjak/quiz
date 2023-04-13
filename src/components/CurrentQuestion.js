@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { quiz } from 'reducers/quiz'
 import Summary from './Summary'
@@ -8,16 +8,33 @@ import RestartBtn from './RestartBtn'
 export const CurrentQuestion = () => {
   const question = useSelector((state) => state.quiz.questions[state.quiz.currentQuestionIndex])
   const dispatch = useDispatch()
-  const isQuizOver = useSelector((store) => store.quiz.quizOver);
+  const isQuizOver = useSelector((store) => store.quiz.quizOver)
+  const [answerColor, setAnswerColor] = useState('pink');
+  const [showSelectedColor, setShowSelectedColor] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
 
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>
   }
 
   const handleOptionClick = (option, index) => {
-    console.log(`You clicked on option ${option} with index: ${index}`)
     dispatch(quiz.actions.submitAnswer({ questionId: question.id, answerIndex: index }))
-    dispatch(quiz.actions.goToNextQuestion())
+    setSelectedIndex(index);
+    console.log('index', index);
+
+    setShowSelectedColor(true);
+    if (index === question.correctAnswerIndex) {
+      setAnswerColor('green');
+    } else {
+      setAnswerColor('red');
+    }
+
+    setTimeout(() => {
+      setSelectedIndex(100)
+      dispatch(quiz.actions.goToNextQuestion())
+      setShowSelectedColor(false);
+      setAnswerColor('transparent')
+    }, 2000)
   }
 
   return (
@@ -26,9 +43,14 @@ export const CurrentQuestion = () => {
       {!isQuizOver && (
         <div key={question.id}>
           <h1>Question: {question.questionText}</h1>
-          {question.options.map((option) => (
+          {question.options.map((option, index) => (
             <div key={option.id}>
-              <button type="button" onClick={() => handleOptionClick(option, question.options.indexOf(option))}>{option}</button>
+              <button
+                style={{ backgroundColor: (showSelectedColor && index === selectedIndex) ? answerColor : 'transparent' }}
+                type="button"
+                onClick={() => handleOptionClick(option, question.options.indexOf(option, index))}>
+                {option}
+              </button>
             </div>
           ))}
           <p>Correct answer: {question.correctAnswerIndex} </p>

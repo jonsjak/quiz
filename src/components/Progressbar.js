@@ -54,6 +54,7 @@ const ProgressBar = () => {
   const percentCompleted = `${useSelector(
     (store) => (store.quiz.currentQuestionIndex * 100) / store.quiz.questions.length
   )}%`;
+  console.log(percentCompleted);
   return (
     <Wrapper>
       <Amount> THIS IS QUESTION NO &nbsp;

@@ -2,7 +2,7 @@
 // // // import zombie-start from 'public/images/zombie-start.png'
 
 // // // const GlobalStyles = createGlobalStyle`
-// // // *, 
+// // // *,
 // // // body {
 // // //   box-sizing: border-box;
 // // //   margin: 0;
