@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const StyledButton = styled.button`
-    position: relative;
+    
     background-color: #F36B2B;
     color: black;
     font-size: 1.25vw;
