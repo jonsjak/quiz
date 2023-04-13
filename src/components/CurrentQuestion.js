@@ -12,6 +12,7 @@ export const CurrentQuestion = () => {
   const [answerColor, setAnswerColor] = useState('pink');
   const [showSelectedColor, setShowSelectedColor] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
+  const [disabled, setDisabled] = useState(false);
 
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>
@@ -21,6 +22,7 @@ export const CurrentQuestion = () => {
     dispatch(quiz.actions.submitAnswer({ questionId: question.id, answerIndex: index }))
     setSelectedIndex(index);
     console.log('index', index);
+    setDisabled(true)
 
     setShowSelectedColor(true);
     if (index === question.correctAnswerIndex) {
@@ -34,7 +36,8 @@ export const CurrentQuestion = () => {
       dispatch(quiz.actions.goToNextQuestion())
       setShowSelectedColor(false);
       setAnswerColor('transparent')
-    }, 2000)
+      setDisabled(false)
+    }, 100)
   }
 
   return (
@@ -46,6 +49,7 @@ export const CurrentQuestion = () => {
           {question.options.map((option, index) => (
             <div key={option.id}>
               <button
+                disabled={disabled}
                 style={{ backgroundColor: (showSelectedColor && index === selectedIndex) ? answerColor : 'transparent' }}
                 type="button"
                 onClick={() => handleOptionClick(option, question.options.indexOf(option, index))}>
