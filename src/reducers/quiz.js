@@ -18,13 +18,22 @@ const initialState = {
   questions,
   answers: [],
   currentQuestionIndex: 0,
-  quizOver: false
+  quizOver: false,
+  quizStarted: false
 }
+
+export const startQuiz = () => ({
+  type: 'quiz/startQuiz'
+});
 
 export const quiz = createSlice({
   name: 'quiz',
   initialState,
   reducers: {
+
+    startQuiz: (state) => {
+      state.quizStarted = true;
+    },
 
     /**
      * Use this action when a user selects an answer to the question.
