@@ -16,41 +16,52 @@ export const CurrentQuestion = () => {
   const [showSelectedColor, setShowSelectedColor] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
   const [disabled, setDisabled] = useState(false);
-
+  const [showCorrectColor, setShowCorrectColor] = useState();
+  const [correctIndex, setCorrectIndex] = useState();
+  const [correctColor, setCorrectColor] = useState();
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>
   }
-
   const handleOptionClick = (option, index) => {
     dispatch(quiz.actions.submitAnswer({ questionId: question.id, answerIndex: index }))
     setSelectedIndex(index);
-    console.log(selectedIndex);
-    console.log('index', index);
+    setCorrectIndex(question.correctAnswerIndex);
     setDisabled(true)
-
     setShowSelectedColor(true);
     if (index === question.correctAnswerIndex) {
       setAnswerColor('green');
+      setShowCorrectColor(false);
+      setCorrectColor('green');
     } else {
       setAnswerColor('red');
+      setShowCorrectColor(true);
+      setCorrectColor('green');
     }
-
     setTimeout(() => {
       setSelectedIndex(100)
       dispatch(quiz.actions.goToNextQuestion())
       setShowSelectedColor(false);
       setAnswerColor('#D1E64B')
+      setShowCorrectColor(false);
+      setCorrectColor('');
       setDisabled(false)
     }, 1000)
   }
-
   const handleMouseEnter = (e) => {
     e.target.style.background = '#F36B2B'
   }
   const handleMouseLeave = (e) => {
-    e.target.style.background = '#D1E64B'
+    e.target.style.background = '#D1E64B';
   }
-
+  const getButtonColor = (index) => {
+    if (showSelectedColor && index === selectedIndex) {
+      return answerColor;
+    } else if (showCorrectColor && index === correctIndex) {
+      return correctColor;
+    } else {
+      return '#D1E64B';
+    }
+  };
   return (
     <BackgroundStarter>
       {!quizStarted && <Starter />}
@@ -63,12 +74,14 @@ export const CurrentQuestion = () => {
                 <StyledButton
                   optionbutton
                   disabled={disabled}
-                  style={{ backgroundColor: (showSelectedColor && index === selectedIndex) ? answerColor : '#D1E64B' }}
+                  style={{
+                    backgroundColor: getButtonColor(index)
+                  }}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   type="button"
                   // eslint-disable-next-line max-len
-                  onClick={() => handleOptionClick(option, question.options.indexOf(option, index))}>
+                  onClick={() => handleOptionClick(option, index)}>
                   {option}
                 </StyledButton>
               </div>
