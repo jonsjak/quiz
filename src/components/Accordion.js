@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { StyledAccordion } from './Style/GlobalStyle';
 
 export const Accordion = () => {
   const questions = useSelector((store) => store.quiz.questions);
@@ -13,23 +14,30 @@ export const Accordion = () => {
   };
 
   return (
-    <div>
+    <StyledAccordion>
       {questions.map((question, index) => (
         <div key={question.id}>
           <button
             type="button"
-            className={activeAccordion === index ? 'active' : 'inactive'}
+            className={activeAccordion === index ? 'accordionActive' : 'accordionInactive'}
             onClick={() => handleAccordionClick(index)}>
-            {question.questionText}
+            <h5>{question.questionText}</h5>
           </button>
           {activeAccordion === index && (
             <div className="answer">
-              <p><span className="bold">User answer:</span> {answers[index].answer}</p>
-              <p><span className="bold">Correct answer:</span> {question.options[question.correctAnswerIndex]}</p>
+              <p>
+                <span style={{ fontWeight: 'bold' }}>User answer:
+                </span> {answers[index].answer}
+              </p>
+              <p>
+                <span
+                  style={{ fontWeight: 'bold' }}>Correct answer:
+                </span> {question.options[question.correctAnswerIndex]}
+              </p>
             </div>
           )}
         </div>
       ))}
-    </div>
+    </StyledAccordion>
   );
 };

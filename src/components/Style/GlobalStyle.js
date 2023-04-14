@@ -169,4 +169,16 @@ export const StyledButton = styled.button`
   `}
 `
 
+export const StyledAccordion = styled.div`
+    overflow-y: scroll;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+`
+/* Add styling for active/inactive accordion and hovering? */
+
 export default GlobalStyles;
