@@ -5,8 +5,7 @@ import { Starter } from 'components/Starter';
 import Summary from './Summary'
 import Progressbar from './Progressbar'
 import RestartBtn from './RestartBtn'
-import { StyledButton } from './Style/Button';
-import { OptionContainer, BackgroundStarter, MainContainer } from './Style/GlobalStyle';
+import { OptionContainer, BackgroundStarter, StyledButton, InnerContainer } from './Style/GlobalStyle';
 
 export const CurrentQuestion = () => {
   const question = useSelector((state) => state.quiz.questions[state.quiz.currentQuestionIndex])
@@ -25,6 +24,7 @@ export const CurrentQuestion = () => {
   const handleOptionClick = (option, index) => {
     dispatch(quiz.actions.submitAnswer({ questionId: question.id, answerIndex: index }))
     setSelectedIndex(index);
+    console.log(selectedIndex);
     console.log('index', index);
     setDisabled(true)
 
@@ -53,35 +53,32 @@ export const CurrentQuestion = () => {
 
   return (
     <BackgroundStarter>
-      <MainContainer>
-        {!quizStarted && <Starter />}
-        {!isQuizOver && quizStarted && (
-          <div key={question.id}>
-            <h1>Question: {question.questionText}</h1>
-            <OptionContainer>
-              {question.options.map((option, index) => (
-                <div key={option.id}>
-                  <StyledButton
-                    optionbutton
-                    disabled={disabled}
-                    style={{ backgroundColor: (showSelectedColor && index === selectedIndex) ? answerColor : '#D1E64B' }}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    type="button"
-                    // eslint-disable-next-line max-len
-                    onClick={() => handleOptionClick(option, question.options.indexOf(option, index))}>
-                    {option}
-                  </StyledButton>
-                </div>
-              ))}
-            </OptionContainer>
-            <p>Correct answer: {question.correctAnswerIndex} </p>
-            <Progressbar />
-            <RestartBtn />
-          </div>)}
-
-        {isQuizOver && (<Summary />)}
-      </MainContainer>
+      {!quizStarted && <Starter />}
+      {!isQuizOver && quizStarted && (
+        <InnerContainer key={question.id}>
+          <h1>{question.questionText}</h1>
+          <OptionContainer>
+            {question.options.map((option, index) => (
+              <div key={option.id}>
+                <StyledButton
+                  optionbutton
+                  disabled={disabled}
+                  style={{ backgroundColor: (showSelectedColor && index === selectedIndex) ? answerColor : '#D1E64B' }}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  type="button"
+                  // eslint-disable-next-line max-len
+                  onClick={() => handleOptionClick(option, question.options.indexOf(option, index))}>
+                  {option}
+                </StyledButton>
+              </div>
+            ))}
+          </OptionContainer>
+          <Progressbar />
+          <RestartBtn />
+        </InnerContainer>)}
+      {isQuizOver && (
+        <Summary />)}
     </BackgroundStarter>
   )
 }

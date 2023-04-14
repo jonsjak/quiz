@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { quiz } from 'reducers/quiz'
-import { StyledButton } from './Style/Button'
+import { StyledButton } from './Style/GlobalStyle'
 
 const RestartBtn = () => {
   const dispatch = useDispatch()
