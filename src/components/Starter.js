@@ -27,7 +27,7 @@ export const Starter = () => {
       <StyledButton
         type="button"
         onClick={handleStartQuiz}>
-            START QUIZ
+            START ZOMBIE QUIZ
       </StyledButton>
     </StartContainer>
   )
