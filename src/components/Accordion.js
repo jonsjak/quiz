@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { StyledAccordion } from './Style/GlobalStyle';
+import { StyledAccordion, StyledButton, AccordionH5, AnswersContainer } from './Style/GlobalStyle';
 
 export const Accordion = () => {
   const questions = useSelector((store) => store.quiz.questions);
@@ -17,24 +17,26 @@ export const Accordion = () => {
     <StyledAccordion>
       {questions.map((question, index) => (
         <div key={question.id}>
-          <button
+          <StyledButton
+            accordian
             type="button"
             className={activeAccordion === index ? 'accordionActive' : 'accordionInactive'}
             onClick={() => handleAccordionClick(index)}>
-            <h5>{question.questionText}</h5>
-          </button>
+            <AccordionH5 style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'green' : 'red' }}>{question.questionText}
+            </AccordionH5>
+          </StyledButton>
           {activeAccordion === index && (
-            <div className="answer">
-              <p>
-                <span style={{ fontWeight: 'bold' }}>User answer:
+            <AnswersContainer>
+              <p style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'green' : 'red', margin: 0 }}>
+                <span style={{ fontWeight: 'bold' }}>Your answer:
                 </span> {answers[index].answer}
               </p>
-              <p>
+              <p style={{ color: 'green', marginBottom: 0 }}>
                 <span
                   style={{ fontWeight: 'bold' }}>Correct answer:
                 </span> {question.options[question.correctAnswerIndex]}
               </p>
-            </div>
+            </AnswersContainer>
           )}
         </div>
       ))}
