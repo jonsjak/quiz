@@ -80,10 +80,10 @@ export const StartContainer = styled.section`
 
 export const OptionContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2,1fr);
-    width: 260px;
-    gap: 20px;
+    width: 100%;
+    gap: 25px;
     justify-content: center;
     margin: auto;
 
@@ -145,28 +145,33 @@ export const StyledButton = styled.button`
 
     ${(props) => props.optionbutton && css`
         letter-spacing: 0.1vw;
-        width: 120px;
-        height: 80px;
+        width: 100%;
+        height: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 16px;
-        padding: 10px 10px;
+        padding: 10px;
+        border none;
+        background: #D1E64B;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
 
-    @media (min-width: 768px) and (max-width: 1023px) {
-        width: 100%;
-    }
-
-    @media (min-width: 1023px) {
-        width: 100%;
-    }
+        word-break: break-all;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        -webkit-box-shadow: 0px 0px 0px 0.5em #D1E64B;
+        -moz-box-shadow: 0px 0px 0px 0.5em #D1E64B;
+        box-shadow: 0px 0px 0px 0.5em #D1E64B;
   `}
 
     ${(props) => props.accordian && css`
         letter-spacing: 0.1vw;
         outline: none;
         border: none;
-        background:  #d1e64b94;
+        background: #d1e64bce;
         width: 100%;
 
         :hover {

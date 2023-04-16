@@ -22,16 +22,16 @@ export const Accordion = () => {
             type="button"
             className={activeAccordion === index ? 'accordionActive' : 'accordionInactive'}
             onClick={() => handleAccordionClick(index)}>
-            <AccordionH5 style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'green' : 'red' }}>{question.questionText}
+            <AccordionH5 style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'forestgreen' : 'orangered' }}>{question.questionText}
             </AccordionH5>
           </StyledButton>
           {activeAccordion === index && (
             <AnswersContainer>
-              <p style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'green' : 'red', margin: 0 }}>
+              <p style={{ color: answers[index].answer === question.options[question.correctAnswerIndex] ? 'forestgreen' : 'orangered', margin: 0 }}>
                 <span style={{ fontWeight: 'bold' }}>Your answer:
                 </span> {answers[index].answer}
               </p>
-              <p style={{ color: 'green', marginBottom: 0 }}>
+              <p style={{ color: 'forestgreen', marginBottom: 0 }}>
                 <span
                   style={{ fontWeight: 'bold' }}>Correct answer:
                 </span> {question.options[question.correctAnswerIndex]}

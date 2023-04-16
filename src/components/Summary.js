@@ -12,7 +12,7 @@ const Summary = () => {
     <InnerContainer>
       {correctAnswers.length > 5 ? (<h1>Congratulations! You survived the Zombie apocalypse!</h1>)
         : (<h1>Oh no! You got infected! Better luck next time</h1>)}
-      <p>{correctAnswers.length} right answers out of {answers.length}</p>
+      <p>Your score is {correctAnswers.length}/{answers.length}</p>
       <RestartBtn />
       <Accordion />
     </InnerContainer>

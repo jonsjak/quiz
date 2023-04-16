@@ -26,13 +26,13 @@ export const AnswerOptions = () => {
 
     setShowSelectedColor(true);
     if (index === question.correctAnswerIndex) {
-      setAnswerColor('green');
+      setAnswerColor('olivedrab');
       setShowCorrectColor(false);
-      setCorrectColor('green');
+      setCorrectColor('olivedrab');
     } else {
-      setAnswerColor('red');
+      setAnswerColor('orangered');
       setShowCorrectColor(true);
-      setCorrectColor('green');
+      setCorrectColor('olivedrab');
     }
 
     setTimeout(() => {
@@ -47,11 +47,11 @@ export const AnswerOptions = () => {
   }
 
   const handleMouseEnter = (e) => {
-    e.target.style.background = '#F36B2B'
+    e.target.style.boxShadow = '0px 0px 0px 0.5em #F36B2B';
   }
 
   const handleMouseLeave = (e) => {
-    e.target.style.background = '#D1E64B';
+    e.target.style.boxShadow = '0px 0px 0px 0.5em #D1E64B';
   }
 
   const getOptionColor = (index) => {
@@ -67,12 +67,13 @@ export const AnswerOptions = () => {
   return (
     <>
       {question.options.map((option, index) => (
-        <div key={option.id}>
+        <div key={option.id} lang="en">
           <StyledButton
             optionbutton
+            lang="en"
             disabled={disabled}
             style={{
-              backgroundColor: getOptionColor(index)
+              boxShadow: `0px 0px 0px 0.5em ${getOptionColor(index)}`
             }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
