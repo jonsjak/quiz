@@ -1,13 +1,14 @@
 # Redux quiz group project
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to to build a quiz game using Redux. A multiple-choice quiz, with our own questions and a bunch of possible answers to present to the users.
+This was a group project made by [Jonas](https://github.com/jonsjak), [Johanna](https://github.com/JohLeo), [Vera](https://github.com/Vera-Sjunnesson) & [Sammy](https://github.com/sammyolsson)
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We used Figma as a project planner, to list tasks and sketch design.
+Regarding coding we went with the pair-programming approach with mobile first in mind.
+We focused on the functionality of the components first and then styled the quiz with styled components.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cute-pasca-d39626.netlify.app/
